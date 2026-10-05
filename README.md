@@ -76,3 +76,38 @@ Promise digunakan untuk menangani hasil dari proses asynchronous. Hasilnya dapat
 3. Async/Await
 
 Async/Await digunakan untuk membuat kode asynchronous lebih sederhana dan mudah dibaca. await digunakan untuk menunggu proses Promise selesai.# Synchronous-vs-Asynchronous-js
+
+### Contoh
+//CallBack
+function ambilData(callback) {
+    setTimeout(() => {
+        callback("Data berhasil diambil");
+    }, 1000);
+}
+
+ambilData((data) => {
+    console.log(data);
+});
+
+//Promise
+const data = new Promise((resolve) => {
+    setTimeout(() => {
+        resolve("Data berhasil diambil");
+    }, 1000);
+});
+
+data.then((hasil) => {
+    console.log(hasil);
+});
+
+//Async
+function ambilData() {
+    return Promise.resolve("Data berhasil diambil");
+}
+
+async function tampilkanData() {
+    const hasil = await ambilData();
+    console.log(hasil);
+}
+
+tampilkanData();
