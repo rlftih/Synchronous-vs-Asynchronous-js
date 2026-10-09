@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+// Eksperimen 1 — setTimeout dan urutan
+console.log("1 - Pertama");
+
+setTimeout(() => {
+  console.log("2 - Dari setTimeout");
+}, 1000);
+
+console.log("3 - Setelah setTimeout didaftarkan");
+
+// Pertanyaan sebelum jalan: angka berapa yang muncul terakhir?
+
+// Eksperimen 2 — setTimeout dengan delay 0
+console.log("A");
+setTimeout(() => console.log("B"), 0);
+console.log("C");
+
+// Apakah B muncul sebelum atau sesudah C? Mengapa?
+
+// Eksperimen 3 — fetch real
+console.log("Sebelum fetch");
+
+fetch("https://jsonplaceholder.typicode.com/todos/1&quot;")
+  .then(res => res.json())
+  .then(data => console.log("Data fetch:", data.title));
+
+console.log("Setelah fetch didaftarkan");
+
+// Baris mana yang muncul pertama — "Setelah fetch" atau "Data fetch"?
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script >
+        //Synchronous — Satu Per Satu, Berurutan
+
+console.log("Mulai");
+
+function hitungTotal(koleksi) {
+  let total = 0;
+  for (const buku of koleksi) {
+    total += buku.stok;
+  }
+  return total;
+}
+
+const koleksi = [
+  { judul: "Laskar Pelangi", stok: 3 },
+  { judul: "Sapiens", stok: 2 },
+  { judul: "Atomic Habits", stok: 5 }
+];
+
+const total = hitungTotal(koleksi); // baris ini harus selesai dulu
+console.log("Total stok:", total);  // baru baris ini dieksekusi
+console.log("Selesai");
+
+// Output selalu dalam urutan ini:
+// Mulai
+// Total stok: 10
+// Selesai
+
+    </script>
+</body>
+</html>

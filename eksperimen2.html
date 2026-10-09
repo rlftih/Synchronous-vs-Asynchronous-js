@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  <script >
+    //Asynchronous — Mulai, Lanjut, Kembali Nanti
+
+console.log("1. Mulai muat halaman Perpus");
+
+// Mulai fetch data — TIDAK blocking
+// JavaScript tidak menunggu, langsung lanjut ke baris berikutnya
+fetch("https://api.example.com/buku&quot;")
+  .then(response => response.json())    
+  .then(data => {
+    // Ini dieksekusi NANTI, saat data sudah tiba
+    console.log("3. Data buku diterima:", data.length, "buku");
+  });
+
+// Baris ini langsung dieksekusi tanpa menunggu fetch selesai
+console.log("2. Render loading state dulu...");
+
+// Output:
+// 1. Mulai muat halaman BWAPerpus
+// 2. Render loading state dulu...
+// 3. Data buku diterima: 8 buku  ← muncul belakangan, setelah data tiba
+  
+  </script>
+</body>
+</html>

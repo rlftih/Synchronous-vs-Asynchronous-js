@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+//Tiga Cara Menulis Kode Asynchronous di JavaScript
+//JavaScript telah berkembang dalam cara menangani async code. Ada tiga generasi pendekatan yang perlu diketahui:
+//Callback adalah pendekatan paling awal — kirim sebuah fungsi sebagai argumen yang akan dipanggil saat operasi selesai. Sederhana untuk kasus tunggal, tapi menjadi mimpi buruk saat banyak operasi async bergantung satu sama lain.
+//Promise adalah evolusi dari callback — sebuah object yang merepresentasikan nilai yang akan tersedia di masa depan. Lebih terstruktur, bisa di-chain, dan punya mekanisme error handling yang lebih jelas.
+//Async/Await adalah sintaks modern yang dibangun di atas Promise — memungkinkan penulisan kode async yang terlihat dan terasa seperti kode synchronous biasa. Ini adalah standar yang paling banyak dipakai saat ini.____________________________________________________________
+// Callback — cara lama
+ambilDataBuku(function(data) {
+  prosesBuku(data, function(hasil) {
+    simpanHasil(hasil, function() {
+      console.log("Selesai");
+    });
+  });
+});
+
+// Promise — lebih terstruktur
+ambilDataBuku()
+  .then(data => prosesBuku(data))
+  .then(hasil => simpanHasil(hasil))
+  .then(() => console.log("Selesai"))
+  .catch(error => console.error(error));
+
+// Async/Await — paling bersih
+async function jalankan() {
+  try {
+    const data = await ambilDataBuku();
+    const hasil = await prosesBuku(data);
+    await simpanHasil(hasil);
+    console.log("Selesai");
+  } catch (error) {
+    console.error(error);
+  }
+}
+</script>
+</body>
+</html>
